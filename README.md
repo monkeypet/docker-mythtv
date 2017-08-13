@@ -170,6 +170,8 @@ You can:
    of the backend (will probably have to do this via mysql).  mythbackend
    will fail to bind to a visible IP, but a userland redirector like `redir`
    may do the trick.
+ - You can run docker with --net=host to force it to use your host's existing network.  However, be aware of the
+   security ramifications.
 
 I tried adding `-O BackendServerIP=blah -O MasterServerIP=blah` to my
 mythfrontend command line.  That let it boot, but wasn't sufficient for
