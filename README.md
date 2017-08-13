@@ -175,6 +175,12 @@ I tried adding `-O BackendServerIP=blah -O MasterServerIP=blah` to my
 mythfrontend command line.  That let it boot, but wasn't sufficient for
 streaming.
 
+# Mysql remote access
+
+In order to have the MYSQL accessible from remote mythtv frontends, you must bind it to a non local address. In /etc/mysql/mariadb.conf.d/50-server.cnf, replace the bind-address = 127.0.0.1 with bind-address = 0.0.0.0.
+
+Next, you need to open up access to the db from remote computers, in mysql: set password for 'mythtv'@'%'=password('your_secure_password'); grant all on mythconverg.* to mythtv@"%" identified by "mythtv";
+
 # Bugs
 
 mythbackend doesn't seem to properly write its PID to /var/run/mythtv, and
